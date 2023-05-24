@@ -104,14 +104,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: 15),
                 BaseButton(
                   text: isDiscovering ? 'Descobrindo...' : 'Descobrir',
-                  onPressed: isDiscovering
-                      ? null
-                      : () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => const ProductsPage(),
-                              settings: RouteSettings(arguments: ''),
-                            ),
-                          ),
+                  onPressed: isDiscovering ? null : () => discover(context),
                 ),
                 const SizedBox(height: 15),
                 Visibility(
