@@ -20,12 +20,18 @@ class _HomePageState extends State<HomePage> {
   int found = -1;
   TextEditingController portController = TextEditingController(text: '9100');
 
+  @override
+  void initState() {
+    discover();
+    super.initState();
+  }
+
   void showCustomSnackBar(String text) {
     final snackBar = SnackBar(content: Text(text, textAlign: TextAlign.center));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  void discover(BuildContext ctx) async {
+  void discover() async {
     setState(() {
       isDiscovering = true;
       devices.clear();
@@ -104,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(height: 15),
                 BaseButton(
                   text: isDiscovering ? 'Descobrindo...' : 'Descobrir',
-                  onPressed: isDiscovering ? null : () => discover(context),
+                  onPressed: isDiscovering ? null : discover,
                 ),
                 const SizedBox(height: 15),
                 Visibility(
